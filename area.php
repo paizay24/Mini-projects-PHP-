@@ -1,3 +1,14 @@
+<?php 
+
+if(empty($_POST['ur_width']) || empty($_POST['ur_height'])){
+      header('Location:index.php');
+}
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -154,19 +165,19 @@
                         </li>
                   </ol>
                   <h1 class=" text-center font-serif font-bold m-4 text-3xl">Area Calculator</h1>
-                  <form action="./area.php" method="post" class="p-5">
-                        <div>
-                              <label for="ur_width">Your Width</label>
-                              <input type="number" name="ur_width" id="ur_width" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
-                        </div>
-                        <div class=" my-3">
-                              <label for="ur_height">Your Height</label>
-                              <input type="number" name="ur_height" id="ur_height" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
-                        </div>
-                        <button type="submit" class="py-3 w-full justify-center px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
-                              Calculate
+                  <?php
+                  $height = $_POST['ur_height'];
+                  $width = $_POST['ur_width'];
+
+                  $area = $height * $width;
+
+                  ?>
+                  <p class=" text-center text-2xl font-mono font-bold"><?= $area.' '.'sqft' ?></p>
+                  <a href="./index.php">
+                  <button type="button" class=" mt-3 py-3 w-full justify-center px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                              Calculate Again
                         </button>
-                  </form>
+                  </a>
             </section>
       </main>
 
